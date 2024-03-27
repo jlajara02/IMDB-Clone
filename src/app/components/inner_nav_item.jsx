@@ -4,8 +4,8 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 
 export default function inner_nav_item({title, param}) {
-    const searchParams = useSearchParams();
-    const genre = searchParams.get('genre');
+    const SearchParams = useSearchParams();
+    const genre = SearchParams.get('genre');
   return (
     <div>
         <Link href={`/?genre=${param}`} 
