@@ -9,15 +9,14 @@ import { useState, useEffect } from 'react';
 function Home() {
   const IMDBAPI = 'c7d86efee0273e5fa951ad3b0983f65c'; // process.env.IMDB_API_KEY
 
-  console.log("useSearchParams : " + useSearchParams);
   const searchParams = useSearchParams();
   const genre = searchParams.get('genre') || 'fetchTrending';
-  //const genre = searchParams
-  console.log("genere : " + genre);
   console.log("process.env.IMDB_API_KEY: " + process.env.IMDB_API_KEY )
   console.log("IMDBAPI: " + IMDBAPI )
+  console.log("genre: " + genre )
   //const genre = 'fetchTrending';
-  const url = `https://api.themoviedb.org/3${genre === 'fetchTopRated' ? `/movie/toprated`:`/trending/all/week`}?api_key=${IMDBAPI}&language=en-US`
+  const url = `https://api.themoviedb.org/3${genre === 'fetchTopRated' ? `/movie/top_rated`:`/trending/all/week`}?api_key=${IMDBAPI}&language=en-US`
+  console.log("url: " + url )
   
   const [movieData, setMovieData] = useState(0)
   useEffect (() =>{
@@ -62,9 +61,8 @@ function Home() {
   } 
 
   return (
-    <div> home page
-    <h2>Movie Title:</h2> 
-    <ul>{ 
+    <div> home page <br/>
+    Movie Title: <ul>{ 
       //dataArray.forEach((element) => {JSON.stringify(element.title)})
 
       /* for (const [key, value] of Object.entries(object)) {
@@ -73,8 +71,7 @@ function Home() {
       
       //userElements.forEach((element) => {element.title})
       //userElements
-    } </ul>
-    </div>
+    } </ul></div>
   )
 }
 
